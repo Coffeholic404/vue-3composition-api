@@ -1,30 +1,22 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <nav class="p-5 bg-green-400 text-white mb-10">
+    <router-link :to="{ name: 'Home' }">Snazzy Fake Blog</router-link>
+  </nav>
+  <div class="container">
+    <router-view></router-view>
+    <div v-if="isLoading">Loading...</div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script setup>
+import usePageRequest from './composables/usePageRequest'
+
+const {isLoading} = usePageRequest();
+
+</script>
+<!-- <style lang="css">
+.container {
+  max-width: 960px;
+  margin: 0 auto;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+</style> -->
